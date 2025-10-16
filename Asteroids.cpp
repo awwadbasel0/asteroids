@@ -25,11 +25,11 @@ Asteroid::Asteroid(Vector2 pos,Vector2 speed,int size):pos(pos),speed(speed),siz
     Asteroid Asteroid::CreateAsteroid(){
     switch (rand()%4) {
     case 0:
-    return Asteroid({rand()%1920/1.0f,1080.0f},{GetRandomValue(2, 4)*1.0f,GetRandomValue(2, 4)*1.0f},rand()%3);
+    return Asteroid({rand()%1920/1.0f,1080.0f},{GetRandomValue(2, 4)*1.0f,-GetRandomValue(2, 4)*1.0f},rand()%3);
     case 1:
     return Asteroid({rand()%1920/1.0f,0.0f},{GetRandomValue(2, 5)*1.0f,GetRandomValue(2, 5)*1.0f},rand()%3);
     case 2:
-    return Asteroid({1920,rand()%1080/1.0f},{GetRandomValue(2, 5)*1.0f,GetRandomValue(2, 5)*1.0f},rand()%3);
+    return Asteroid({1920,rand()%1080/1.0f},{-GetRandomValue(2, 5)*1.0f,GetRandomValue(2, 5)*1.0f},rand()%3);
     case 3:
     return Asteroid({0,rand()%1080/1.0f},{GetRandomValue(2, 5)*1.0f,GetRandomValue(2, 5)*1.0f},rand()%3);    
     }

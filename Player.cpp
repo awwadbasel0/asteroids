@@ -65,7 +65,7 @@ shot::shot(Vector2 pos,Vector2 trajectory):pos(pos),trajectory(trajectory){}
 bool shot::Draw(){
     DrawCircle(pos.x, pos.y, 5, WHITE);
     Vector2 newPos={pos.x+(trajectory.x),pos.y+(trajectory.y)};
-    if(!CheckCollisionPointRec(newPos, {0,0,GetScreenWidth()*1.0f,GetScreenHeight()*1.0f})){
+    if(!CheckCollisionPointRec(newPos, {-120,-120,(GetScreenWidth()+200)*1.0f,(GetScreenHeight()+200)*1.0f})){
 //         if(newPos.x<0){newPos.x=GetScreenWidth()-(newPos.x);}
 //         else if(newPos.x>GetScreenWidth()){newPos.x=0+(newPos.x-GetScreenWidth());}
 //         else if(newPos.y<0){newPos.y=GetScreenHeight()-(newPos.y);}
