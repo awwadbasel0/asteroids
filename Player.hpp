@@ -16,9 +16,6 @@ class Player{
     private:
     Vector2 currentPos;
     float rotation;
-    // shot *shots;
-    int shotsSize=0;
-    int shotindex=-1;
     public:
     std::list<shot> shots;
     Player();

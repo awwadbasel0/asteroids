@@ -49,7 +49,7 @@ void Player::thrust(){
         currentPos=newPos;
 }
 void Player::shoot(){
-    shotindex++;
+    // shotindex++;
     // if(shotindex>=shotsSize){
     //     if(shotsSize==0)
     //         shotsSize=1;

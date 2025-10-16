@@ -34,8 +34,13 @@ int main(int argc, char *argv[]) {
     play->Draw();
     DrawText(std::to_string(points).c_str(), 0, 0, 64, RAYWHITE);
     EndDrawing();
-    for(auto i=play->shots.begin();i!=play->shots.end();i++){
-            points+=(*i).CheckCollisionAsteroid(asteroids);
+    for(auto i=play->shots.begin();i!=play->shots.end();){
+      int gained=(*i).CheckCollisionAsteroid(asteroids);
+            points+=gained;
+            if(gained>0)
+              i=play->shots.erase(i);
+            else
+              i++;
         }
     for(auto i=asteroids.begin();i!=asteroids.end();){
       (*i).Update();
