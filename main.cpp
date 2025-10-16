@@ -25,13 +25,11 @@ int main(int argc, char *argv[]) {
     BeginDrawing();
     ClearBackground(CLITERAL(Color){0x1F,0x1F,0x23, 1});
     // here
-    DrawCircle(play->getPos().x, play->getPos().y, 40, WHITE);
     for(auto i=asteroids.begin();i!=asteroids.end();i++){
       (*i).Draw();
 //       if(CheckCollisionCircles(play->getPos(),40,(*i).getPos(), ((*i).getSize()+1)*40))
 //         i=asteroids.erase(i);
       // else
-        i++;
     }
     play->Draw();
     DrawText(std::to_string(points).c_str(), 0, 0, 64, RAYWHITE);
