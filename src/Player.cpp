@@ -19,10 +19,10 @@ void Player::Draw(){
     Vector2 rotated = Vector2Rotate(local, DEG2RAD * rotation);
     points[i] = Vector2Add(currentPos, rotated);
     }
-    DrawLineV(points[0],points[1], RAYWHITE);
-    DrawLineV(points[0],points[2], RAYWHITE);
-    DrawLineV(points[1],points[3], RAYWHITE);
-    DrawLineV(points[2],points[3], RAYWHITE);
+    DrawLineV(points[0],points[1], RED);
+    DrawLineV(points[0],points[2], RED);
+    DrawLineV(points[1],points[3], RED);
+    DrawLineV(points[2],points[3], RED);
     //Shots
         for(auto i=shots.begin();i!=shots.end();){
             if(!(*i).Draw()){

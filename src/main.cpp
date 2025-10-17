@@ -4,6 +4,7 @@
 #include "../include/Asteroids.hpp"
 #include "../include/Player.hpp"
 int main(int argc, char *argv[]) {
+  SetConfigFlags(FLAG_WINDOW_RESIZABLE);
   InitWindow(1920, 1080, "asteroids");
   SetTargetFPS(60);
   std::list<Asteroid>asteroids;
@@ -35,6 +36,7 @@ int main(int argc, char *argv[]) {
     }
     BeginDrawing();
     ClearBackground(CLITERAL(Color){0x1F,0x1F,0x23, 1});
+    DrawRectangleGradientEx({0,0,GetScreenWidth()*1.0f,GetScreenHeight()*1.0f}, (Color){0x29,0x29,0x29}, BLACK, BLACK, BLACK);
     // here
     for(auto i=asteroids.begin();i!=asteroids.end();i++){
       (*i).Draw();
