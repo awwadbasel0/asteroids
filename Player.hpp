@@ -16,6 +16,9 @@ class Player{
     private:
     Vector2 currentPos;
     float rotation;
+    bool destroyed=false;
+    float currentSpeed=0;
+    bool doneAccel=true;
     public:
     std::list<shot> shots;
     Player();
@@ -24,4 +27,7 @@ class Player{
     void rotate(bool direction);
     void shoot();
     Vector2 getPos();
+    void Destroy();
+    void accelarate();
+    void differentMovement();
 };

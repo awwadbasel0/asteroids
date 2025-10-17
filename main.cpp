@@ -1,3 +1,4 @@
+#include <iostream>
 #include <raylib.h>
 #include <string>
 #include "Asteroids.hpp"
@@ -7,6 +8,7 @@ int main(int argc, char *argv[]) {
   SetTargetFPS(60);
   std::list<Asteroid>asteroids;
   Player *play=new Player();
+  int timebroken=0;
   int points=0;
   for(auto i=0;i<10;i++){
         asteroids.push_back(Asteroid::CreateAsteroid());
@@ -16,24 +18,36 @@ int main(int argc, char *argv[]) {
       play->rotate(false);
     if(IsKeyDown(KEY_RIGHT))
       play->rotate(true);
-    if(IsKeyDown(KEY_UP))
-      play->thrust();
+    // if(IsKeyDown(KEY_UP))
+    //   play->thrust();
+    if(IsKeyPressed(KEY_UP)){
+      play->accelarate();
+    }
     if(IsKeyPressed(KEY_SPACE))
       play->shoot();
-    while(asteroids.size()<10)
+    while(asteroids.size()<4)
     {asteroids.push_back(Asteroid::CreateAsteroid());}
+    if(timebroken>1){
+      timebroken--;
+    } else if(timebroken>0) {
+      play=new Player();
+      timebroken=0;
+    }
     BeginDrawing();
     ClearBackground(CLITERAL(Color){0x1F,0x1F,0x23, 1});
     // here
     for(auto i=asteroids.begin();i!=asteroids.end();i++){
       (*i).Draw();
-//       if(CheckCollisionCircles(play->getPos(),40,(*i).getPos(), ((*i).getSize()+1)*40))
-//         i=asteroids.erase(i);
+      if(CheckCollisionCircles(play->getPos(),30,(*i).getPos(), ((*i).getSize()+1)*40)){
+        play->Destroy();
+        timebroken=60;
+      }
       // else
     }
     play->Draw();
     DrawText(std::to_string(points).c_str(), 0, 0, 64, RAYWHITE);
     EndDrawing();
+    play->differentMovement();
     for(auto i=play->shots.begin();i!=play->shots.end();){
       int gained=(*i).CheckCollisionAsteroid(asteroids);
             points+=gained;
