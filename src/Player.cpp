@@ -1,5 +1,5 @@
-#include "Player.hpp"
-#include "Asteroids.hpp"
+#include "../include/Player.hpp"
+#include "../include/Asteroids.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <list>
@@ -122,7 +122,7 @@ void Player::differentMovement(){
             currentSpeed-=0.5;
         } else{
             currentSpeed++;
-            std::cout<<currentSpeed<<std::endl;
+            // std::cout<<currentSpeed<<std::endl;
             if(currentSpeed>=16)
                 doneAccel=true;
         }

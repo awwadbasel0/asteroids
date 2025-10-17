@@ -1,8 +1,8 @@
 #include <iostream>
 #include <raylib.h>
 #include <string>
-#include "Asteroids.hpp"
-#include "Player.hpp"
+#include "../include/Asteroids.hpp"
+#include "../include/Player.hpp"
 int main(int argc, char *argv[]) {
   InitWindow(1920, 1080, "asteroids");
   SetTargetFPS(60);

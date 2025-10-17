@@ -1,8 +1,7 @@
-#include "Asteroids.hpp"
+#include "../include/Asteroids.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <raylib.h>
-#include "Asteroids.hpp"
 #include <cmath>
 
 
