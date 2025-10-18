@@ -13,16 +13,20 @@ Player::Player(){
 void Player::Draw(){
     //Player
     if(!destroyed){
-    Vector2 points[]={{currentPos.x,currentPos.y},{currentPos.x-30,currentPos.y-30},{currentPos.x+30,currentPos.y-30},{currentPos.x,currentPos.y-20},};
-    for(int i=0;i<4;i++){
+    Vector2 points[]={{currentPos.x,currentPos.y},{currentPos.x-30,currentPos.y-90},{currentPos.x+30,currentPos.y-90},{currentPos.x-25,currentPos.y-75},{currentPos.x+25,currentPos.y-75},{currentPos.x,currentPos.y-100},{currentPos.x-15,currentPos.y-75},{currentPos.x+15,currentPos.y-75}};
+    for(int i=0;i<8;i++){
     Vector2 local = Vector2Subtract(points[i], currentPos);
     Vector2 rotated = Vector2Rotate(local, DEG2RAD * rotation);
     points[i] = Vector2Add(currentPos, rotated);
     }
     DrawLineV(points[0],points[1], RED);
     DrawLineV(points[0],points[2], RED);
-    DrawLineV(points[1],points[3], RED);
-    DrawLineV(points[2],points[3], RED);
+    // DrawLineV(points[1],points[3], RED);
+    DrawLineV(points[3],points[4], RED);
+if(!doneAccel)
+{    DrawLineV(points[6],points[5], RED);
+    DrawLineV(points[5],points[7], RED);}
+    // DrawLineV(points[5],points[3], RED);
     //Shots
         for(auto i=shots.begin();i!=shots.end();){
             if(!(*i).Draw()){
@@ -118,7 +122,7 @@ void Player::Destroy(){
     destroyed=true;
 }
 void Player::accelarate(){
-    if(currentSpeed==0){
+    if(currentSpeed<=16){
         currentSpeed=5;
         doneAccel=false;
     }

@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
       play->rotate(true);
     // if(IsKeyDown(KEY_UP))
     //   play->thrust();
-    if(IsKeyPressed(KEY_UP)){
+    if(IsKeyDown(KEY_UP)){
       play->accelarate();
     }
     if(IsKeyPressed(KEY_SPACE))
