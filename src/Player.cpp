@@ -86,12 +86,21 @@ int shot::CheckCollisionAsteroid(std::list<Asteroid>& asteroids){
             switch((*it).getSize()){
                 case 0:
                 points+=40;
+                // asteroids.push_back(Asteroid((*it).getPos(),{-1,-1},0));
+                // asteroids.push_back(Asteroid((*it).getPos(),{1,-1},0));
+                // asteroids.push_back(Asteroid((*it).getPos(),{0,1},0));
                 break;
                 case 1:
                 points+=80;
+                asteroids.push_back(Asteroid((*it).getPos(),{-1,-1},0));
+                asteroids.push_back(Asteroid((*it).getPos(),{1,-1},0));
+                asteroids.push_back(Asteroid((*it).getPos(),{0,1},0));
                 break;
                 case 2:
                 points+=160;
+                asteroids.push_back(Asteroid((*it).getPos(),{-1,-1},1));
+                asteroids.push_back(Asteroid((*it).getPos(),{1,-1},1));
+                asteroids.push_back(Asteroid((*it).getPos(),{0,1},1));
                 break;
             }
             (*it).active=false;
