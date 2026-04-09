@@ -10,6 +10,7 @@ int main(int argc, char *argv[]) {
   std::list<Asteroid>asteroids;
   Player *play=new Player();
   int timebroken=0;
+  int timealive=0;
   int points=0;
   for(auto i=0;i<10;i++){
         asteroids.push_back(Asteroid::CreateAsteroid());
@@ -27,12 +28,15 @@ int main(int argc, char *argv[]) {
     if(IsKeyPressed(KEY_SPACE))
       play->shoot();
     while(asteroids.size()<4)
-    {asteroids.push_back(Asteroid::CreateAsteroid());}
+    {
+        asteroids.push_back(Asteroid::CreateAsteroid());
+    }
     if(timebroken>1){
       timebroken--;
     } else if(timebroken>0) {
       play=new Player();
       timebroken=0;
+      timealive=0;
     }
     BeginDrawing();
     ClearBackground(CLITERAL(Color){0x1F,0x1F,0x23, 1});
@@ -40,13 +44,15 @@ int main(int argc, char *argv[]) {
     // here
     for(auto i=asteroids.begin();i!=asteroids.end();i++){
       (*i).Draw();
-      if(CheckCollisionCircles(play->getPos(),30,(*i).getPos(), ((*i).getSize()+1)*40)){
+      if(CheckCollisionCircles(play->getPos(),30,(*i).getPos(), ((*i).getSize()+1)*40) && timealive>120){
         play->Destroy();
         timebroken=60;
+        timealive=0;
       }
       // else
     }
     play->Draw();
+    timealive++;
     DrawText(std::to_string(points).c_str(), 0, 0, 64, RAYWHITE);
     EndDrawing();
     play->differentMovement();

@@ -35,7 +35,7 @@ Asteroid::Asteroid(Vector2 pos,Vector2 speed,int size):pos(pos),speed(speed),siz
     return Asteroid({0,rand()%1080/1.0f},{GetRandomValue(2, 5)*1.0f,GetRandomValue(2, 5)*1.0f},rand()%3);
     }
     void Asteroid::Destroy(){
-        free(this);
+        // free(this);
     }
     Vector2 Asteroid::getPos(){
     return pos;
